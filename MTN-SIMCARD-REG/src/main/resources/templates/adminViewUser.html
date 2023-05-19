@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container-fluid text-center" style="padding-top: 3rem;">
+    <div>
+        <div class="text-center h2 m-3"><h2>All user signup in our system</h2></div>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead class=" " style="background-color: orange">
+    <tr>
+        <th>ID</th>
+        <th>username</th>
+        <th>Email</th>
+        <th>passwd</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="client : ${clients}">
+        <tr>
+            <td>[[${client.id}]]</td>
+            <td>[[${client.username}]]</td>
+            <td>[[${client.Email}]]</td>
+            <td>[[${client.passwd}]]</td>
+
+        </tr>
+
+    </th:block>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

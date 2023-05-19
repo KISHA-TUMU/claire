@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>[[${pageTitle}]]</title>
+</head>
+<body>
+<div class="container-fluid text-center" style="padding-top: 6rem;">
+    <div class="text-center h2 m-3" style="color: #00172D"><h2>[[pageTitle]]</h2>
+
+        <div th:if="message">
+            [[${message}]]
+        </div>
+        <div class="container-fluid text-center">
+            <form th:action="@{/client/save}" method="post" th:object="${client}">
+                <div class="border border-secondary p-3 rounded">
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Firstname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{firstname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Lastname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{lastname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" th:field="*{email}" required>
+                        </div>
+                    </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Photo</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" th:field="*{photo}" required>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn" style="color: #00172D">Save</button>
+                        <button type="button" class="btn" style="color: #ffc107" onclick="cancelRegForm()">Cancel</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+<script>
+    function cancelRegForm(){
+        window.location = "adminViewPage.html";
+    }
+</script>
+</body>
+</html>

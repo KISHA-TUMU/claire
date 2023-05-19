@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AdminPage</title>
+    <style>
+        body {
+            background:url("https://www.mtn.com/wp-content/uploads/2022/02/MTN-Group-Web-Banner.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding:5em;
+        }
+
+        .container-fluid {
+            padding-top: 8rem;
+        }
+
+        .h2 {
+            margin-bottom: 2rem;
+            color: #007bff;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #fff;
+            border-color: #ffc107;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div class="h2">Admin Home View</div>
+
+    <div class="text-center">
+        <a class="btn btn-warning m-3" href="/clients">View Clients</a>
+        <a class="btn btn-warning m-3" href="/client/new">Register Client</a>
+        <button class="btn m-3" onclick="AdminLogInClientViewPage()">View Users</button>
+    </div>
+</div>
+<script>
+    function AdminLogInClientViewPage() {
+        window.location.href = "adminViewClientPage";
+    }
+</script>
+</body>
+</html>

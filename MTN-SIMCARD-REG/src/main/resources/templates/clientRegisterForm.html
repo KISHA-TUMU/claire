@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>REGISTRATION FORM</title>
+    <style>
+        body {
+            color: #00172D;
+            background-imager: url("/pic/t4.jpg");
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            padding-top: 6rem;
+        }
+
+        h2 {
+            color: #00172D;
+        }
+
+        .border-secondary {
+            border-color: #6C757D !important;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .col-form-label {
+            color: #6C757D;
+        }
+
+        .btn {
+            color: #00172D;
+            background-color: transparent;
+            border: 2px solid #00172D;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #00172D;
+            color: white;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #6C757D;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div class="text-center h2 m-3">
+        <h2>REGISTRATION FORM</h2>
+        <div th:if="message">
+            [[${message}]]
+        </div>
+        <div class="container-fluid text-center">
+            <form th:action="@{/client/save}" method="post" th:object="${client}">
+                <div class="border border-secondary p-3 rounded">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">National-ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="id_no" th:fields="*{id_no}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Firstname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="firstname" th:fields="*{firstname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Lastname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="lastname" th:fields="*{lastname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" name="email" th:fields="*{email}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Photo</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="photo" th:fields="*{photo}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Place</label>
+                        <div class="col-sm-8">
+                            <select name="selector">
+                                <option selected>...</option>
+                                <option  th:value="*{selector}">MTN Branch</option>
+                                <option th:value="*{selector}">Agent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn">Save</button>
+                        <button type="button" class="btn" style="color: #ffc107" onclick="cancelRegForm()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function cancelRegForm(){
+        window.location = "/admin/login";
+    }
+</script>
+</body>
+</html>

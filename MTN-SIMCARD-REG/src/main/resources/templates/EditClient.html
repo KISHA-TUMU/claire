@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>[[${pageTitle}]]</title>
+</head>
+<body>
+<div class="container-fluid text-center" style="padding-top: 6rem;">
+    <div class="text-center h2 m-3" style="color: #00172D"><h2>[[Edit User Information]]</h2>
+
+        <div th:if="message">
+            [[${message}]]
+            <a class="btn btn-warning" th:href="@{/admin/login}">BACK</a>
+        </div>
+        <div class="container-fluid text-center">
+            <form th:action="@{${'/edit/'+client.id}}" method="post" th:object="${client}">
+                <div class="border border-secondary p-3 rounded">
+                    <input type="hidden" name="id" th:fields="*{id}" th:value="${client.id}">
+                    <input type="hidden" name="createdOn" th:fields="*{createdOn}" th:value="${client.createdOn}">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">National-ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="id_no" th:value="${client.id_no}" th:fields="*{id_no}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Firstname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="firstname" th:value="${client.firstname}" th:fields="*{firstname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Lastname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="lastname" th:value="${client.lastname}" th:fields="*{lastname}" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" name="email" th:value="${client.email}" th:fields="*{email}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Photo</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="photo" th:value="${client.photo}" th:fields="*{photo}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Place</label>
+                        <div class="col-sm-8">
+                            <select name="selector">
+                                <option th:text="${client.selector}" selected>...</option>
+                                <option  >MTN Branch</option>
+                                <option >Agent</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn" style="color: #00172D">Save</button>
+                        <button type="button" class="btn" style="color: #ffc107" onclick="cancelRegForm()">Cancel</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+<script>
+    function cancelRegForm(){
+        window.location = "/";
+    }
+</script>
+</body>
+</html>
